@@ -2,7 +2,7 @@
 
 **Explore, understand, and visualize high-dimensional representations of cultural and medical data.**
 
-This project applies machine learning embedding methods and*dimensionality reduction visualization (t-SNE, UMAP, PCA) to the public datasets available through the [Wellcome Collection Developer API & Datasets](https://developers.wellcomecollection.org/docs/datasets).
+This project applies machine learning embedding methods and dimensionality reduction visualization (t-SNE, UMAP, PCA) to the public datasets available through the [Wellcome Collection Developer API & Datasets](https://developers.wellcomecollection.org/docs/datasets).
 
 The goal is to transform textual and metadata-rich records (e.g. catalogue works, medical reports) into semantic vector spaces and produce interactive visualizations to explore patterns, clusters, and relationships.
 
