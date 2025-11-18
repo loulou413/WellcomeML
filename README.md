@@ -32,10 +32,10 @@ You can access them via the **Wellcome API** or download the snapshots directly 
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/wellcome-embeddings.git
-cd wellcome-embeddings
+git clone https://github.com/loulou413/WellcomeML.git
+cd WellcomeML
 
-python -m venv venv
-source venv/bin/activate    # or on Windows: venv\Scripts\activate
+python -m venv <environement name>
+source <environement name>/bin/activate    # or on Windows: <environement name>\Scripts\activate
 
 pip install -r requirements.txt
