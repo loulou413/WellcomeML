@@ -1,0 +1,25 @@
+numpy
+scipy
+pandas
+scikit-learn
+umap-learn
+
+matplotlib
+seaborn
+plotly
+
+requests
+tqdm
+python-dotenv
+
+streamlit
+
+# NLP + embeddings
+spacy
+transformers
+sentence-transformers
+
+# PyTorch CPU-only (works on all Windows machines)
+torch
+torchvision
+torchaudio
