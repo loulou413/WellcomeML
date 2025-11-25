@@ -1,31 +1,47 @@
-# Embedded Space Visualization for Wellcome Collection Datasets
+# Embedded Space Visualization & Metadata Enrichment for Wellcome Collection Datasets
 
-**Explore, understand, and visualize high-dimensional representations of cultural and medical data.**
+**Primary goal: retrieve, clean, and enrich Wellcome Collection catalogue records.**  
 
-This project applies machine learning embedding methods and dimensionality reduction visualization (t-SNE, UMAP, PCA) to the public datasets available through the [Wellcome Collection Developer API & Datasets](https://developers.wellcomecollection.org/docs/datasets).
+This project focuses on obtaining dataset snapshots and improving metadata quality by filling missing or inconsistent fields (dates, locations, subjects, creators) using deterministic heuristics, text inference, and record linking.
 
-The goal is to transform textual and metadata-rich records (e.g. catalogue works, medical reports) into semantic vector spaces and produce interactive visualizations to explore patterns, clusters, and relationships.
+Key capabilities:
+- Download and version dataset snapshots from the Wellcome API or provided JSON/CSV dumps.
+- Clean and normalize metadata fields (dates, names, locations, subject tags).
+- Enrich / impute missing values using internal data, rule-based inference, and cross-record linking.
 
 ---
 
 ## Content
 
-- `data/` – Scripts for downloading and cleaning Wellcome datasets  
-- `README.md` – Project overview (you’re reading it!)
+- `data/` – raw snapshots and cleaned/enriched outputs  
+- `scripts/` – downloader, cleaning, enrichment, and export utilities  
+- `notebooks/` – optional exploratory notebooks for analysis and visualization  
+- `results/` – visualizations, reports, and export-ready CSV/JSON  
+- `README.md` – Project overview (this file)
 
 ---
 
-## Project Overview
+## Project Workflow
+
+1. Retrieve a dataset snapshot (Wellcome catalogue).
+2. Normalize fields (dates, creators, locations, subject tags).
+3. Identify empty or ambiguous fields and attempt to fill them via:
+    - Text inference from title/description/notes
+    - Controlled-vocabulary matching for subjects and locations
+    - Cross-record linking and de-duplication
+    - Optional external lookups (respecting terms and privacy)
+4. Validate and log changes with provenance metadata.
+
+
+---
 
 ## Data Sources
 
-| Dataset | Description | Link |
-|----------|--------------|------|
-| Catalogue snapshot | Metadata for Wellcome Collection’s works and images | [Wellcome Works Dataset](https://developers.wellcomecollection.org/docs/datasets/catalogue) |
-| London MOH Reports | Medical Officer of Health annual reports (1850–1972) | [MOH Reports Dataset](https://developers.wellcomecollection.org/docs/datasets/moh-reports) |
+| Dataset | Focus | Link |
+|---------|-------|------|
+| Catalogue snapshot (primary) | Metadata for Wellcome Collection works and images — target for enrichment | https://developers.wellcomecollection.org/docs/datasets/catalogue |
 
-You can access them via the **Wellcome API** or download the snapshots directly (JSON or CSV).
-
+Note: External lookups are used only when terms/permissions allow.
 
 ---
 
@@ -35,7 +51,19 @@ You can access them via the **Wellcome API** or download the snapshots directly 
 git clone https://github.com/loulou413/WellcomeML.git
 cd WellcomeML
 
-python -m venv <environement name>
-source <environement name>/bin/activate    # or on Windows: <environement name>\Scripts\activate
+python -m venv <env_name>
+source <env_name>/bin/activate    # Windows: <env_name>\Scripts\activate
 
 pip install -r requirements.txt
+```
+
+---
+
+## Usage (brief)
+
+- Use `scripts/download_catalogue.py` to fetch a snapshot (or place your JSON/CSV in `data/raw/`).
+- Run `scripts/clean_metadata.py` to normalize fields.
+- Run `scripts/enrich_metadata.py` to attempt filling empty fields (outputs saved in `data/enriched/`).
+- Optional: explore `notebooks/` for lightweight analyses and visual checks (embeddings/UMAP/t-SNE/PCA only if needed).
+
+Contributions, issues, and suggestions are welcome via the repository.
