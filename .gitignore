@@ -1,2 +1,12 @@
-/ML_proj2/
+#name of our environement
+/ML_proj2/ 
 /mleh2/
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Data directories (files directly in data/ are not ignored)
+data/*/
+
