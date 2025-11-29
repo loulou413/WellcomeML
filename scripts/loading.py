@@ -1,9 +1,10 @@
 import requests
 from pathlib import Path
 from tqdm.auto import tqdm
+import pandas as pd
 import gzip
 import json
-import pandas as pd
+
 
 
 def load_wellcome_data(n_samples=10000, data_dir="./data", force_download=False):
