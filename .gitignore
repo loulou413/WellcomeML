@@ -8,5 +8,6 @@ __pycache__/
 *.pyo
 
 # Data directories (files directly in data/ are not ignored)
-data/*/
+data/
+
 
