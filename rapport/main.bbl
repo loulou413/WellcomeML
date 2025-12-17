@@ -1,0 +1,118 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{wellcome2024}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=6709abdc33368bf79cbb1199fba0e029}{%
+           family={{Wellcome Trust}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{6709abdc33368bf79cbb1199fba0e029}
+      \strng{fullhash}{6709abdc33368bf79cbb1199fba0e029}
+      \strng{bibnamehash}{6709abdc33368bf79cbb1199fba0e029}
+      \strng{authorbibnamehash}{6709abdc33368bf79cbb1199fba0e029}
+      \strng{authornamehash}{6709abdc33368bf79cbb1199fba0e029}
+      \strng{authorfullhash}{6709abdc33368bf79cbb1199fba0e029}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://wellcome.org/}}
+      \field{note}{Accessed: 2024}
+      \field{title}{Wellcome Collection}
+      \field{year}{2024}
+    \endentry
+    \entry{missing_values_table}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=3b2df8f267a3868224d931bc099fd9f1}{%
+           family={Larcher},
+           familyi={L\bibinitperiod},
+           given={Louis},
+           giveni={L\bibinitperiod}}}%
+        {{hash=da466ef17c0291a512d8891b3333a2b9}{%
+           family={Manueguerra},
+           familyi={M\bibinitperiod},
+           given={Cassio},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d61cbc4848ab781b51aaffda4d398232}{%
+           family={Taieb},
+           familyi={T\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \strng{fullhash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \strng{bibnamehash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \strng{authorbibnamehash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \strng{authornamehash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \strng{authorfullhash}{a7f9574f11aa935abb329ee7fa15ffcf}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{Images/NaN_percentage.png}}
+      \field{note}{Statistical analysis of data completeness}
+      \field{title}{Missing Values Analysis for Wellcome Collection Dataset}
+      \field{year}{2025}
+    \endentry
+    \entry{devlin2019bert}{article}{}
+      \name{author}{4}{}{%
+        {{hash=13202969e372bc82318f9629cbdd199b}{%
+           family={Devlin},
+           familyi={D\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a45784fe7163b45f11d166564f5d24b6}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Ming-Wei},
+           giveni={M\bibinithyphendelim W\bibinitperiod}}}%
+        {{hash=8dde73b4194f5bc4230c4808f3fc1534}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Kenton},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b92aa283415413bb8d2a1548716d0c7d}{%
+           family={Toutanova},
+           familyi={T\bibinitperiod},
+           given={Kristina},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{fullhash}{e8bccd48302a14eeba57d9dce2f49ef4}
+      \strng{bibnamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authorbibnamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authornamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authorfullhash}{e8bccd48302a14eeba57d9dce2f49ef4}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of NAACL-HLT}
+      \field{title}{BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding}
+      \field{year}{2019}
+      \field{pages}{4171\bibrangedash 4186}
+      \range{pages}{16}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

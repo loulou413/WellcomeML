@@ -1,0 +1,42 @@
+% !TEX root = main.tex
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Summary}
+
+In this project, we addressed the challenge of automatically predicting creation dates for artworks in the Wellcome Collection, in collaboration with the Laboratory for Experimental Museology (eM+). We developed and compared two approaches based on BERT language models:
+
+\begin{enumerate}
+    \item \textbf{Frozen BERT}: Using pre-trained embeddings with a trainable linear classifier, offering computational efficiency while achieving [TO BE FILLED] accuracy.
+
+    \item \textbf{Fine-tuned BERT}: End-to-end training that adapts the model to the date prediction task, achieving [TO BE FILLED] accuracy at higher computational cost.
+\end{enumerate}
+
+Our results demonstrate that textual metadata in museum collections contains sufficient signal for temporal prediction, and that modern language models can effectively capture this information.
+
+\subsection{Limitations}
+
+Several limitations should be acknowledged:
+\begin{itemize}
+    \item The date categories used may not align perfectly with art historical periods
+    \item Ambiguous or approximate dates in the ground truth affect model evaluation
+    \item Our experiments focused on English-language metadata only
+    \item The single-collection focus may limit generalizability
+\end{itemize}
+
+\subsection{Future Work}
+
+Promising directions for future research include:
+\begin{itemize}
+    \item \textbf{Multimodal approaches}: Incorporating image data alongside text for improved predictions
+    \item \textbf{Regression formulation}: Predicting continuous year values rather than categorical periods
+    \item \textbf{Cross-collection transfer}: Testing generalization to other museum collections
+    \item \textbf{Uncertainty quantification}: Providing confidence estimates for predictions
+    \item \textbf{Integration with eM+ tools}: Deploying the model in practical museum curation workflows
+\end{itemize}
+
+\subsection{Acknowledgments}
+
+We thank the Laboratory for Experimental Museology (eM+) at EPFL for their guidance and domain expertise, and the Wellcome Collection for making their data openly available.
+
+\end{document}

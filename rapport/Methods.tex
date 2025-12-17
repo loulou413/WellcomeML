@@ -1,0 +1,142 @@
+% !TEX root = main.tex 
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Methods}
+
+\paragraph{Global approach.}
+We explore two distinct approaches for our task, each then also divided in two subcases: regression and classification.
+
+\vspace{0.5em}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+    \textbf{Frozen BERT with a trained head:} In this approach, a pre-trained BERT
+    model acts as a fixed feature extractor. The BERT layers are frozen, and only a custom
+    classification or regression head (e.g., a linear layer) is trained on top of the extracted embeddings.
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+    \textbf{Unfrozen (Fine-tuned) BERT with a trained head:} This approach involves
+    fine-tuning the entire BERT model along with its custom head. Backpropagation flows
+    through all layers of the model, allowing BERT's internal representations to adapt to our specific dataset and task.
+\end{minipage}
+
+\vspace{1em}
+
+\begin{multicols}{2}
+    \subsection{Data and Preprocessing}
+
+    The Wellcome Collection provides open access to its catalog data.
+    Our dataset consists of artwork records containing various textual fields like title, worktype,
+    description, languages, contributors, physical description, etc.\\
+    Only title and worktype are always available, while the rest may be missing in some records.
+    For exemple, the target date field is not available for only TODO\% of the records \parencite{missing_values_table}.
+
+    \paragraph{Text Merging.} As our model is based on BERT, we need every text field into one.
+    Therefore we concatenate all available text fields into a single input string, that follows recommended
+    patterns to help BERT better understand the context and the fields name meaning.
+
+    \paragraph{Data Cleaning.}%
+    We performed several data cleaning steps to prepare the dataset for model training.
+    First, we removed non-meaningful or near fully empty columns such as various identification numbers, lettering or edition.
+    Next, we removed all records with missing dates from our dataset. We identified and removed outliers in the
+    date field, it gives us a dataset of TODO records with date fields going from TODO to TODO.
+
+    \paragraph{Date Preprocessing.}%
+    Before everything to avoid any dataleak we can now split our dataset into train and test sets.
+    Then, depending on the specific task, we processed the date information differently: for
+    classification tasks, we one-hot encoded relevant time periods, while for regression tasks,
+    we normalized the dates to a continuous range between 0 and 1.
+
+    \subsection{Approach 1: Frozen BERT}
+
+    Our first approach uses pre-trained BERT \parencite{devlin2019bert} as a fixed feature extractor.
+    The model weights remain unchanged during training, allowing us to benefit from BERT's
+    pre-trained language understanding without the computational cost of fine-tuning.
+
+    \paragraph{Architecture.}
+    The input text is encoded by BERT into a fixed-size vector, then passed through a predicting head to produce the final prediction.
+    We try different head architectures to compare their performance, both are multi-layer perceptrons (MLP) once use for
+    regression and once for classification.
+
+    % Architecture diagram using TikZ
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            box/.style={rectangle, draw, rounded corners, minimum height=0.5cm, minimum width=1cm, align=center, font=\scriptsize},
+            frozen/.style={box, fill=blue!15, draw=blue!60},
+            trainable/.style={box, fill=green!15, draw=green!60},
+            arrow/.style={-{Stealth}, thick}
+            ]
+            \node[font=\scriptsize] (input) {Input Text};
+            \node[frozen, right=0.4cm of input] (bert) {BERT};
+            \node[trainable, right=1.4cm of bert] (head) {Predicting Head};
+            \node[above=0.2cm of head, font=\scriptsize\itshape, text=green!60!black] (trained_label) {Trained};
+            \node[right=0.4cm of head, font=\scriptsize] (output) {Prediction};
+
+            \draw[arrow] (input) -- (bert);
+            \draw[arrow] (bert) -- (head) node[midway, above, font=\scriptsize, align=center] {Fixed-size\\Vector};
+            \draw[arrow] (head) -- (output);
+        \end{tikzpicture}
+        \caption{\scriptsize Frozen BERT architecture}
+        \label{fig:frozen_bert_arch}
+    \end{figure}
+
+    \paragraph{Training Strategy.}
+    Since only the head is trainable, we can use a higher learning rate (e.g.TODO).
+    Training is fast and memory-efficient, making this approach suitable for rapid experimentation.
+
+    \subsection{Approach 2:   BERT}
+
+    Our second approach allows the BERT model to adapt its representations by training end-to-end.
+
+    \paragraph{Architecture.}
+    The architecture is the same as in Approach 1, but now the entire model is trainable.
+
+    % Architecture diagram using TikZ
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            box/.style={rectangle, draw, rounded corners, minimum height=0.5cm, minimum width=1cm, align=center, font=\scriptsize},
+            trainable/.style={box, fill=green!15, draw=green!60},
+            arrow/.style={-{Stealth}, thick}
+            ]
+            \node[font=\scriptsize] (input) {Input Text};
+            \node[trainable, right=0.4cm of input] (bert) {BERT};
+            \node[above=0.2cm of bert, font=\scriptsize\itshape, text=green!60!black] (bert_label) {Trained};
+            \node[trainable, right=1.4cm of bert] (head) {Predicting Head};
+            \node[above=0.2cm of head, font=\scriptsize\itshape, text=green!60!black] (head_label) {Trained};
+            \node[right=0.4cm of head, font=\scriptsize] (output) {Prediction};
+
+            \draw[arrow] (input) -- (bert);
+            \draw[arrow] (bert) -- (head) node[midway, above, font=\scriptsize, align=center] {Fixed-size\\Vector};
+            \draw[arrow] (head) -- (output);
+        \end{tikzpicture}
+        \caption{\scriptsize Fine-tuned BERT architecture}
+        \label{fig:finetuned_bert_arch}
+    \end{figure}
+
+    \paragraph{Training Strategy.}\leavevmode\vspace{-\parskip}
+    \vspace{1pt}
+    \begin{itemize}[nosep]
+        \item Lower LR for BERT (e.g., $2 \text{e-}5$)
+        \item Higher LR for head
+        \item Warmup schedule
+        \item Early stopping
+    \end{itemize}
+
+    \paragraph{Computational Considerations.} Fine-tuning is significantly more expensive,
+    requiring GPU acceleration for this we used Kaggle.
+
+    \subsection{Evaluation Metrics}
+
+    We evaluate both approaches using:
+    \begin{itemize}[nosep]
+        \item \textbf{Accuracy}: Overall accuracy
+        \item \textbf{Macro F1}: Class-balanced score
+        \item \textbf{Confusion Matrix}: Per-class analysis
+    \end{itemize}
+
+\end{multicols}
+
+\end{document}

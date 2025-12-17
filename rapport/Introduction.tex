@@ -1,0 +1,36 @@
+% !TEX root = main.tex
+%!TEX root = main.tex
+% !TEX root = ./main.tex
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\subsection{Context and Motivation}
+
+Museum collections worldwide are undergoing large-scale digitization efforts, making cultural heritage
+more accessible than ever. The Wellcome Collection \parencite{wellcome2024} is one such
+open-access repository containing hundreds of thousands of artworks, manuscripts, and artifacts related
+to the history of medicine and human experience.\\
+However, like many historical collections, metadata completeness varies significantly-particularly regarding precise dating of objects.
+Accurate dating of museum artifacts is crucial for art historical research, exhibition curation,
+and understanding the evolution of visual and material culture. Manual annotation by experts is
+time-consuming and not scalable to large collections. This motivates the development of automated
+methods that can leverage existing textual metadata to predict missing dates.
+
+\subsection{Collaboration with eM+}
+
+This project is conducted in collaboration with the Laboratory for Experimental Museology (eM+) at EPFL. Initial discussions with the lab explored various potential contributions, including:
+\begin{itemize}
+    \item Visualization of collection embeddings for exploratory analysis
+    \item Recommendation systems for similar artworks
+\end{itemize}
+
+However, based on feedback from eM+ researchers, we pivoted to focus on \textbf{date prediction}, as this addresses a more immediate and practical need for their work.
+
+\subsection{Problem Statement}
+
+Given textual metadata fields (titles, descriptions, physical description, contributors, etc.)
+associated with artworks in the Wellcome Collection, our objective is to predict the
+creation date or date range of each item. We formulate this as a classification task,
+where the target classes represent temporal periods or date ranges.
+
+\end{document}

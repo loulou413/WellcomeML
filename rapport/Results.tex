@@ -1,0 +1,64 @@
+% !TEX root = main.tex
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\begin{multicols}{2}[\section{Results}]
+    \subsection{Experimental Setup}
+
+    All experiments were conducted using PyTorch with the HuggingFace Transformers library,
+    using the \texttt{bert-base-uncased} model as our backbone.
+
+    \subsection{Model Comparison}
+
+    \subsubsection*{Frozen BERT + Linear}
+
+    \subsubsection*{Fine-tuned BERT}
+
+    \vspace{0.5em}
+
+    \subsection{Summary Table}
+
+    % Note: Floats in multicols need special handling or [H]
+    \begin{table}[H]
+        \centering
+        \caption{Comparison of Date Prediction Approaches}
+        \resizebox{\linewidth}{!}{
+            \begin{tabular}{lccc}
+                \toprule
+                \textbf{Method} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Time} \\
+                \midrule
+                Frozen BERT     & [--]              & [--]              & [--]          \\
+                Fine-tuned BERT & [--]              & [--]              & [--]          \\
+                \bottomrule
+            \end{tabular}
+        }
+        \label{tab:results}
+    \end{table}
+
+    \subsection{Analysis}
+
+    \subsubsection*{Key Findings}
+    % TODO: Fill with actual findings
+    \begin{itemize}[noitemsep]
+        \item Finding 1: [TO BE FILLED]
+        \item Finding 2: [TO BE FILLED]
+        \item Finding 3: [TO BE FILLED]
+    \end{itemize}
+
+    \subsubsection*{Trade-offs}
+    \begin{itemize}[noitemsep]
+        \item Frozen: faster training, lower memory
+        \item Fine-tuned: better accuracy, higher cost
+    \end{itemize}
+
+    % TODO: Add confusion matrix or other analysis figures below
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=0.8\linewidth]{confusion_matrix.png}
+    %     \caption{Confusion matrix for the fine-tuned model}
+    %     \label{fig:confusion}
+    % \end{figure}
+
+\end{multicols}
+
+\end{document}

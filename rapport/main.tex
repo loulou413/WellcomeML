@@ -1,0 +1,57 @@
+\documentclass[10pt]{article}
+\usepackage{Preamble}
+
+\begin{document}
+
+\begin{titlepage}
+    \newgeometry{margin=3cm}
+    \centering
+    \includegraphics[width=0.4\linewidth]{epfl.png}\\[0.5cm]
+    \textsc{\LARGE École Polytechnique Fédérale de Lausanne}\\[1cm]
+    \textsc{\Large CS-433 Machine Learning}\\[0.3cm]
+    \textsc{\large Project 2 -- Fall 2025}\\
+    \vspace{\fill}
+    \rule{\linewidth}{0.5mm}\\[0.5cm]
+    {\huge\bfseries Date Prediction for Museum Collections\\
+    \vspace{0.3cm}Using BERT Embeddings}\\[0.3cm]
+    \rule{\linewidth}{0.5mm}\\
+    \vspace{\fill}
+    \textsc{\large In collaboration with}\\[0.3cm]
+    \textbf{Laboratory for Experimental Museology (eM+)}\\[1cm]
+    \begin{tabular}{l l}
+        \textbf{Louis Larcher}      & SCIPER: 361002 \\
+        \textbf{Cassio Manueguerra} & SCIPER: 346232 \\
+        \textbf{Arthur Taieb}       & SCIPER: 361195 \\
+    \end{tabular}\\[2cm]
+    \today
+\end{titlepage}
+\restoregeometry
+
+\thispagestyle{numberonly}
+\begin{summary}
+    \section*{Abstract}
+    This report presents our work on predicting creation dates for artworks in the Wellcome Collection,
+    conducted in collaboration with the Laboratory for Experimental Museology (eM+) at EPFL.
+    Given the incomplete metadata in museum digital archives, automated date prediction offers
+    significant value for collection curation and research. We explore two approaches:
+    (1) using frozen BERT embeddings combined with a linear classifier, and
+    (2) fine-tuning BERT end-to-end with the classification head. Our methods leverage textual descriptions,
+    titles, and other metadata fields to predict temporal categories. We evaluate both approaches and
+    discuss their trade-offs in terms of accuracy and computational requirements.
+\end{summary}
+
+\section{Introduction}
+\subfile{Introduction}
+
+\subfile{Methods}
+
+\subfile{Results}
+
+\section{Conclusion}
+\subfile{Conclusion}
+
+\clearpage
+\pagestyle{numberonly}
+\printbibliography
+
+\end{document}
